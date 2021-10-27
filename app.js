@@ -14,4 +14,16 @@ function rollEarthSpikes(x) {
     return Math.random() < x
 };
 
-console.log(rollEarthSpikes());
+function rollNorthernWinds(x) {
+    x = northernWinds;
+    return Math.random() < x;
+};
+
+function rollLightningBolt(x) {
+    x = lightningBolt;
+    return Math.random() < x
+};
+
+console.log("Earth Spike hit: " + rollEarthSpikes());
+console.log("Northern Winds hit: " + rollNorthernWinds());
+console.log("Lightning Bolt hit: " + rollLightningBolt());

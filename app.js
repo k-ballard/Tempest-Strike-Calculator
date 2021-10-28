@@ -10,6 +10,9 @@ const earthSpikes = {
     procChance : .2,
     proc() {
         return Math.random() < earthSpikes.procChance;
+    },
+    get getProc() {
+        return this.proc;
     }
 };
 
@@ -51,6 +54,9 @@ const static = {
     }
 
 }
+
+console.log(earthSpikes.getProc());
+
 /*
 let hailstorm = false;
 let chargedStone = false;

@@ -1,5 +1,6 @@
 
 const tempestStrike = {
+    tags : ['Physical', 'Lightning', 'Cold', 'Spell', 'Melee', 'Strength', 'Attunement'],
     baseDamage : {Physical: 1, Cold: 1, Lightning: 1},
     manaCost : 0
 };
@@ -33,6 +34,23 @@ console.log("Earth Spike hit: " + earthSpikes.proc());
 console.log("Northern Winds hit: " + lightningBolt.proc());
 console.log("Lightning Bolt hit: " + northernWinds.proc());
 
+const static = {
+    tags : ['Lightning', 'Spell', 'Intelligence', 'Attunement'],
+    baseDamage : {Lightning : 20},
+    onePoint : {
+        
+    },
+    twoPoint : {
+
+    },
+    threePoint : {
+
+    },
+    fourPoint : {
+
+    }
+
+}
 /*
 let hailstorm = false;
 let chargedStone = false;

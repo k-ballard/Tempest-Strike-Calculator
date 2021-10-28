@@ -3,21 +3,32 @@ let earthSpikesProcChance = .2;
 let northernWindsProcChance = .2;
 let lightningBoltProcChance = .2;
 
+/*
 let earthSpikesProc = false;
 let northernWindsProc = false;
 let lightningBoltProc = false;
-
-
-/*
-const tempestStrike = {
-    baseDamage : 100,
-    earthSpikes : {}
-    north
-};
 */
 
 
+const tempestStrike = {
+    baseDamage : {Physical: 1, Cold: 1, Lightning: 1},
+    manaCost : 0
+};
 
+const earthSpikes = {
+    baseDamage : {Physical: 20},
+    procChance: .2
+};
+
+const lightningBolt = {
+    baseDamage : {Lightning: 20},
+    procChance: .2
+}
+
+const northernWinds = {
+    baseDamage : {Cold: 14},
+    procChance : .2
+}
 
 function rollEarthSpikes(x) {
     x = earthSpikesProcChance;

@@ -8,10 +8,10 @@ const tempestStrike = {
 const earthSpikes = {
     baseDamage : {Physical: 20},
     procChance : .2,
-    proc() {
+    get proc() {
         return Math.random() < earthSpikes.procChance;
     },
-    get getProc() {
+    set modifiedProc(x) {
         return this.proc;
     }
 };
@@ -68,6 +68,8 @@ const static = {
 console.log(earthSpikes.getProc());
 console.log(lightningBolt.getProc());
 console.log(northernWinds.getProc());
+
+console.log(earthSpikes.modifyProcChance(.05));
 
 /*
 let hailstorm = false;

@@ -4,21 +4,33 @@ let northernWindsProcChance = .2;
 let lightningBoltProcChance = .2;
 
 let earthSpikesProc = false;
-let northerWindsProc = false;
+let northernWindsProc = false;
 let lightningBoltProc = false;
 
+
+/*
+const tempestStrike = {
+    baseDamage : 100,
+    earthSpikes : {}
+    north
+};
+*/
+
+
+
+
 function rollEarthSpikes(x) {
-    x = earthSpikes;
+    x = earthSpikesProcChance;
     return Math.random() < x;
 };
 
 function rollNorthernWinds(x) {
-    x = northernWinds;
+    x = northernWindsProcChance;
     return Math.random() < x;
 };
 
 function rollLightningBolt(x) {
-    x = lightningBolt;
+    x = lightningBoltProcChance;
     return Math.random() < x;
 };
 
@@ -34,23 +46,23 @@ console.log("Northern Winds hit: " + rollNorthernWinds());
 console.log("Lightning Bolt hit: " + rollLightningBolt());
 
 
-let hailstorm = 'No';
-let chargedStone = 'No';
-let tempest = 'No';
-let allTertiaryProcs = 'No';
-let noTertiaryProcs = 'No';
+let hailstorm = false;
+let chargedStone = false;
+let tempest = false;
+let allTertiaryProcs = false;
+let noTertiaryProcs = false;
 
 function tertiaryEffectProc() {
     if(rollEarthSpikes() === true && rollNorthernWinds() === true && rollLightningBolt() === false) {
-        return hailstorm = 'Yes';
+        return hailstorm = true;
     } else if (rollEarthSpikes() === false && rollNorthernWinds() === true && rollLightningBolt() === true) {
-        return tempest = 'Yes';
+        return tempest = true;
     } else if (rollEarthSpikes() === true && rollNorthernWinds() === false && rollLightningBolt() === true) {
-        return chargedStone = 'Yes';
+        return chargedStone = true;
     } else if (rollEarthSpikes() === true && rollNorthernWinds() === true && rollLightningBolt() === true) {
-        return allSecondaryProcs = 'Yes';
+        return allTertiaryProcs = true;
     } else if (rollEarthSpikes() === false && rollNorthernWinds() === false && rollLightningBolt() === false) {
-        return noSecondaryProcs = 'Yes';
+        return noTertiaryProcs = true;
     } else {
         console.log('Something went wrong...');
     }
@@ -60,5 +72,5 @@ tertiaryEffectProc();
 console.log('Does Hailstorm proc? ' + hailstorm);
 console.log('Does Tempest proc? ' + tempest);
 console.log('Does Charged Stone proc? ' + chargedStone);
-console.log('Do all secondary effects proc? ' + allSecondaryProcs);
-console.log('Do none of the secondary effects proc? ' + noSecondaryProcs);
+console.log('Do all secondary effects proc? ' + allTertiaryProcs);
+console.log('Do none of the secondary effects proc? ' + noTertiaryProcs);

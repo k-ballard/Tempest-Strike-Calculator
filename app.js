@@ -1,15 +1,4 @@
 
-let earthSpikesProcChance = .2;
-let northernWindsProcChance = .2;
-let lightningBoltProcChance = .2;
-
-/*
-let earthSpikesProc = false;
-let northernWindsProc = false;
-let lightningBoltProc = false;
-*/
-
-
 const tempestStrike = {
     baseDamage : {Physical: 1, Cold: 1, Lightning: 1},
     manaCost : 0
@@ -17,46 +6,34 @@ const tempestStrike = {
 
 const earthSpikes = {
     baseDamage : {Physical: 20},
-    procChance: .2
+    procChance : .2,
+    proc() {
+        return Math.random() < earthSpikes.procChance;
+    }
 };
 
 const lightningBolt = {
     baseDamage : {Lightning: 20},
-    procChance: .2
-}
+    procChance : .2,
+    proc() {
+        return Math.random() < lightningBolt.procChance;
+    }
+};
 
 const northernWinds = {
     baseDamage : {Cold: 14},
-    procChance : .2
-}
-
-function rollEarthSpikes(x) {
-    x = earthSpikesProcChance;
-    return Math.random() < x;
+    procChance : .2,
+    proc() {
+        return Math.random() < northernWinds.procChance;
+    }
 };
-
-function rollNorthernWinds(x) {
-    x = northernWindsProcChance;
-    return Math.random() < x;
-};
-
-function rollLightningBolt(x) {
-    x = lightningBoltProcChance;
-    return Math.random() < x;
-};
-
-/* Might be on to something here...
-function secondaryEffectsProc() {
-    if ()
-}
-*/
 
 /* Tests for proc rolls */
-console.log("Earth Spike hit: " + rollEarthSpikes());
-console.log("Northern Winds hit: " + rollNorthernWinds());
-console.log("Lightning Bolt hit: " + rollLightningBolt());
+console.log("Earth Spike hit: " + earthSpikes.proc());
+console.log("Northern Winds hit: " + lightningBolt.proc());
+console.log("Lightning Bolt hit: " + northernWinds.proc());
 
-
+/*
 let hailstorm = false;
 let chargedStone = false;
 let tempest = false;
@@ -85,3 +62,4 @@ console.log('Does Tempest proc? ' + tempest);
 console.log('Does Charged Stone proc? ' + chargedStone);
 console.log('Do all secondary effects proc? ' + allTertiaryProcs);
 console.log('Do none of the secondary effects proc? ' + noTertiaryProcs);
+*/

@@ -21,6 +21,9 @@ const lightningBolt = {
     procChance : .2,
     proc() {
         return Math.random() < lightningBolt.procChance;
+    },
+    get getProc() {
+        return this.proc;
     }
 };
 
@@ -29,6 +32,9 @@ const northernWinds = {
     procChance : .2,
     proc() {
         return Math.random() < northernWinds.procChance;
+    },
+    get getProc() {
+        return this.proc;
     }
 };
 
@@ -40,22 +46,28 @@ console.log("Lightning Bolt hit: " + northernWinds.proc());
 const static = {
     tags : ['Lightning', 'Spell', 'Intelligence', 'Attunement'],
     baseDamage : {Lightning : 20},
-    onePoint : {
-        
-    },
-    twoPoint : {
+    skillPoints : 0,
+    determineSkillPoints() {
+        if (skillPoints === 0) {
 
-    },
-    threePoint : {
+        } else if (skillPoints === 1) {
+            
+        } else if (skillPoints === 2) {
 
-    },
-    fourPoint : {
+        } else if (skillPoints === 3) {
+
+        } else if (skillPoints === 4) {
+
+        } else {
+
+        }
 
     }
-
 }
 
 console.log(earthSpikes.getProc());
+console.log(lightningBolt.getProc());
+console.log(northernWinds.getProc());
 
 /*
 let hailstorm = false;

@@ -1,1 +1,1 @@
-This is v 0.1 of a Tempest Strike Calculator for ARPG Last Epoch. This will attempt to calculate proc chances and damage for a Tempest Strike hit.
+This is a Tempest Strike Calculator for ARPG Last Epoch. This will attempt to calculate proc chances of multiple effects that can be triggered when performing a Tempest Strike hit.

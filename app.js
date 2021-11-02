@@ -7,48 +7,57 @@ const tempestStrike = {
 
 const earthSpikes = {
     baseDamage : {Physical: 20},
-    damageModifiers : [],
+    damageModifiers : [0],
     procChance : .2,
-    procModifiers : [],
+    procModifiers : [0],
     procTest() {
-        return Math.random() < this.procChance + this.procModifiers;
+        return Math.random() < this.procChance;
     },
     newProcChance() {
-        return this.procModifiers.reduce((a, b) => a + b);
+        z = this.procModifiers.reduce((a, b) => a + b);
+        this.procChance = z + this.procChance;
     }
 };
 
 const lightningBolt = {
     baseDamage : {Lightning: 20},
-    damageModifiers : [],
+    damageModifiers : [0],
     procChance : .2,
-    procModifiers : [],
+    procModifiers : [0],
     procTest() {
-        return Math.random() < this.procChance + this.procModifiers;
+        return Math.random() < this.procChance;
     },
     newProcChance() {
-        return this.procModifiers.reduce((a, b) => a + b);
+        z = this.procModifiers.reduce((a, b) => a + b);
+        this.procChance = z + this.procChance;
     }
 };
 
 const northernWinds = {
     baseDamage : {Cold: 14},
-    damageModifiers : [],
+    damageModifiers : [0],
     procChance : .2,
-    procModifiers : [],
+    procModifiers : [0],
     procTest() {
-        return Math.random() < this.procChance + this.procModifiers;
+        return Math.random() < this.procChance;
     },
     newProcChance() {
-        return this.procModifiers.reduce((a, b) => a + b);
+        z = this.procModifiers.reduce((a, b) => a + b);
+        this.procChance = z + this.procChance;
     }
 };
 
-/* Tests for proc rolls */
-//console.log("Earth Spike hit: " + earthSpikes.procTest());
-//console.log("Northern Winds hit: " + lightningBolt.procTest());
-//console.log("Lightning Bolt hit: " + northernWinds.procTest());
+console.log(northernWinds.procChance);
+northernWinds.newProcChance();
+console.log(northernWinds.procChance);
 
+/* Tests for proc rolls */
+console.log("Earth Spike hit: " + earthSpikes.procTest());
+console.log("Lightning Bolt hit: " + lightningBolt.procTest());
+console.log("Northern Winds hit: " + northernWinds.procTest());
+
+
+/* These are my attempt at adding the skill nodes for Tempest Strike. Saving these could be useful if I decide to create a damage calculator.
 const static = {
     tags : ['Lightning', 'Spell', 'Intelligence', 'Attunement'],
     baseDamage : {Lightning : 20},
@@ -73,8 +82,9 @@ const static = {
 }
 
 console.log(static.skillPointsRange);
+*/
 
-/*
+/* These might be useful if I want to roll for tertiary effects AFTER the initial secondary effects have beenr rolled.
 let hailstorm = false;
 let chargedStone = false;
 let tempest = false;

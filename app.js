@@ -7,11 +7,11 @@ const tempestStrike = {
 
 const earthSpikes = {
     baseDamage : {Physical: 20},
-    damageModifier : 0,
+    damageModifiers : [],
     procChance : .2,
     procModifiers : [],
     procTest() {
-        return Math.random() < this.procChance + this.procModifier;
+        return Math.random() < this.procChance + this.procModifiers;
     },
     newProcChance() {
         return this.procModifiers.reduce((a, b) => a + b);
@@ -20,35 +20,39 @@ const earthSpikes = {
 
 const lightningBolt = {
     baseDamage : {Lightning: 20},
+    damageModifiers : [],
     procChance : .2,
+    procModifiers : [],
     procTest() {
-        return Math.random() < this.procChance;
+        return Math.random() < this.procChance + this.procModifiers;
     },
-    get getProc() {
-        return this.proc;
+    newProcChance() {
+        return this.procModifiers.reduce((a, b) => a + b);
     }
 };
 
 const northernWinds = {
     baseDamage : {Cold: 14},
+    damageModifiers : [],
     procChance : .2,
+    procModifiers : [],
     procTest() {
-        return Math.random() < this.procChance;
+        return Math.random() < this.procChance + this.procModifiers;
     },
-    get getProc() {
-        return this.proc;
+    newProcChance() {
+        return this.procModifiers.reduce((a, b) => a + b);
     }
 };
 
 /* Tests for proc rolls */
-console.log("Earth Spike hit: " + earthSpikes.procTest());
+//console.log("Earth Spike hit: " + earthSpikes.procTest());
 //console.log("Northern Winds hit: " + lightningBolt.procTest());
 //console.log("Lightning Bolt hit: " + northernWinds.procTest());
 
 const static = {
     tags : ['Lightning', 'Spell', 'Intelligence', 'Attunement'],
     baseDamage : {Lightning : 20},
-    skillPoints : 0,
+    skillPoints : [0, 1, 2, 3, 4],
     determineSkillPoints() {
         if (skillPoints === 0) {
 
@@ -67,6 +71,7 @@ const static = {
     }
 }
 
+console.log(static.skillPoints);
 
 /*
 let hailstorm = false;

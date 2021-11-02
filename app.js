@@ -52,9 +52,10 @@ const northernWinds = {
 const static = {
     tags : ['Lightning', 'Spell', 'Intelligence', 'Attunement'],
     baseDamage : {Lightning : 20},
-    skillPoints : [0, 1, 2, 3, 4],
-    determineSkillPoints() {
-        if (skillPoints === 0) {
+    //skillPointsRange : [0, 1, 2, 3, 4],
+    totalSkillPoints : 0,
+    determineModifiers() {
+        if (totalSkillPoints === this.skillPointsRange.indexOf(0)) {
 
         } else if (skillPoints === 1) {
             
@@ -71,7 +72,7 @@ const static = {
     }
 }
 
-console.log(static.skillPoints);
+console.log(static.skillPointsRange);
 
 /*
 let hailstorm = false;

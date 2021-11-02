@@ -47,9 +47,11 @@ const northernWinds = {
     }
 };
 
+/* Tests for procModifiers calculations and overwriting of procChance
 console.log(northernWinds.procChance);
 northernWinds.newProcChance();
 console.log(northernWinds.procChance);
+*/
 
 /* Tests for proc rolls */
 console.log("Earth Spike hit: " + earthSpikes.procTest());
@@ -57,7 +59,7 @@ console.log("Lightning Bolt hit: " + lightningBolt.procTest());
 console.log("Northern Winds hit: " + northernWinds.procTest());
 
 
-/* These are my attempt at adding the skill nodes for Tempest Strike. Saving these could be useful if I decide to create a damage calculator.
+/* These are my attempt at adding the skill nodes for Tempest Strike. Saving these could be useful if I decide to create a damage calculator in the future.
 const static = {
     tags : ['Lightning', 'Spell', 'Intelligence', 'Attunement'],
     baseDamage : {Lightning : 20},

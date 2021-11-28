@@ -1,3 +1,13 @@
+// Importing the class "skills" to use in the interface
+
+// Need to learn how to make each file a module
+// import Skills from './skills';
+
+const hammerThrow = new Skills(['Physical','Throwing Attack','Strength','Dexterity'], {Physical: 18, Cold: 2}, 0, 0);
+
+console.log(hammerThrow.tags);
+console.log(hammerThrow.baseDamage);
+
 /* This will be the first attempt at an object generator for the skill Tempest Strike
 
 /* This code is version 1.0, messy and too redudant. Working on an object generator now.

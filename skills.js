@@ -8,34 +8,31 @@ class Skills {
       this.manaCost = manaCost;
       this.attackSpeed = attackSpeed;
     }
-    get proc() {
-        return this.procTest();
-    }
-    procTest() {
-        return Math.random() < this.procChance;
-    }
-    get calculateDamageModifiers() {
-        return this.calculateDamageModifiers();
+
+    get newBaseDamage() {
+         return this.calculateDamageModifiers();
     }
     calculateDamageModifiers() {
-        z = this.damageModifiers.reduce((a, b) => a + b);
-        this.baseDamage = z // + this.damageModifiers;
+        // Attempt to calculate new damage with a For loop and an If condition
+          for (let i = 0; i < this.damageModifiers.length; i++) {
+                if (this.damageModifiers[i][0] === this.baseDamage[i][0]) {
+                    //this.baseDamage.push(this.damageModifiers[i][0]);
+                    return this.baseDamage[i][1] += this.damageModifiers[i][1];
+             }
+         }
+        
     }
   }
   
-const hammerThrow = new Skills(['Physical','Throwing Attack','Strength','Dexterity'], {Physical: 18}, {Physical: 2}, 0, 1);
+const hammerThrow = new Skills(
+    ['Physical','Throwing Attack','Strength','Dexterity'],
+    [['Physical', 18]],
+    [['Physical', 2],['Cold', 3]], 
+    0, 
+    1);
 
-console.log(hammerThrow.tags);
+
+
+console.log(hammerThrow.newBaseDamage);
 console.log(hammerThrow.baseDamage);
 console.log(hammerThrow.damageModifiers);
-console.log(hammerThrow.manaCost);
-console.log(hammerThrow.attackSpeed);
-
-hammerThrow.calculateDamageModifiers;
-
-console.log(hammerThrow.baseDamage);
-
- // baseDamage : {Physical: 20},
- // damageModifiers : [0],
- // procChance : .2,
- // procModifiers : [0],

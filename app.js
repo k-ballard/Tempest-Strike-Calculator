@@ -1,4 +1,6 @@
+/* This will be the first attempt at an object generator for the skill Tempest Strike
 
+/* This code is version 1.0, messy and too redudant. Working on an object generator now.
 const tempestStrike = {
     tags : ['Physical', 'Lightning', 'Cold', 'Spell', 'Melee', 'Strength', 'Attunement'],
     baseDamage : {Physical: 1, Cold: 1, Lightning: 1},
@@ -46,6 +48,7 @@ const northernWinds = {
         this.procChance = z + this.procChance;
     }
 };
+*/
 
 /* Tests for procModifiers calculations and overwriting of procChance
 console.log(northernWinds.procChance);
@@ -54,9 +57,9 @@ console.log(northernWinds.procChance);
 */
 
 /* Tests for proc rolls */
-console.log("Earth Spike hit: " + earthSpikes.procTest());
-console.log("Lightning Bolt hit: " + lightningBolt.procTest());
-console.log("Northern Winds hit: " + northernWinds.procTest());
+//console.log("Earth Spike hit: " + earthSpikes.procTest());
+//console.log("Lightning Bolt hit: " + lightningBolt.procTest());
+//console.log("Northern Winds hit: " + northernWinds.procTest());
 
 
 /* These are my attempt at adding the skill nodes for Tempest Strike. Saving these could be useful if I decide to create a damage calculator in the future.

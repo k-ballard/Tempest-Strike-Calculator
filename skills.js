@@ -1,74 +1,118 @@
 
 // Need to learn how to export this (turn files into modules)
 class Skills {
-    constructor(tags, baseDamage, damageModifiers, manaCost, attackSpeed, cooldown, critChance, critMulti) {
+    constructor(tags, baseDmg, dmgMods, manaCost, manaCostMods, atkSpd, atkSpdMods, cdr, cdrMods, critChance, critChanceMods, critMulti, critMultiMods) {
       this.tags = tags;
-      this.baseDamage = baseDamage;
-      this.damageModifiers = damageModifiers;
+      this.baseDmg = baseDmg;
+      this.dmgMods = dmgMods;
       this.manaCost = manaCost;
-      this.attackSpeed = attackSpeed;
-      this.cooldown = cooldown;
+      this.manaCostMods = manaCostMods;
+      this.atkSpd = atkSpd;
+      this.atkSpdMods = atkSpdMods;
+      this.cdr = cdr;
+      this.cdrMods = cdrMods;
       this.critChance = critChance;
+      this.critChanceMods = critChanceMods;
       this.critMulti = critMulti;
+      this.critMultiMods = critMultiMods;
     }
 
-    get calculateBaseDamage() {
-         return this.calculateDamageModifiers();
+    set newBaseDmg(x) {
+      this.baseDmg = x;
     }
-    calculateDamageModifiers() {
-        // Attempt to calculate new damage
-        let modifierLeng = this.damageModifiers.length;
-        let baseLeng = this.baseDamage.length;
-        let mods = this.damageModifiers;
-        let bases = this.baseDamage;
-        let emptyArr = [];
-          for (let i = 0; i < modifierLeng; i++) {
-            for (let j = 0; j < baseLeng; j++) {
-              //console.log(mods[i][0]);
-              //console.log(bases[j][0]);
-              if (mods[i][0] === bases[j][0]) {
-                //console.log("There's a damage type match.");
-                bases[j][1] += mods[i][1];
+
+    get calculateBaseDmg() {
+         return this.calculateDmgMods();
+    }
+
+    calculateDmgMods() {
+      // Attempt to calculate new damage: working
+      let modLeng = this.dmgMods.length;
+      let baseLeng = this.baseDmg.length;
+      let mods = this.dmgMods;
+      let bases = this.baseDmg;
+        for (let i = 0; i < modLeng; i++) {
+          for (let j = 0; j < baseLeng; j++) {
+            //console.log(mods[i][0]);
+            //console.log(bases[j][0]);
+            if (mods[i][0] === bases[j][0]) {
+              //console.log("There's a damage type match.");
+              bases[j][1] += mods[i][1];
+              //console.log(bases);
+              //console.log(mods);
+            } else if (mods[i][0] !== bases[j][0] || bases[i] === undefined) {
+                //console.log("These damage types don't match.")
                 //console.log(bases);
                 //console.log(mods);
-              } else if (mods[i][0] !== bases[j][0] || bases[i] === undefined) {
-                  //console.log("These damage types don't match.")
-                  //console.log(bases);
-                  //console.log(mods);
-                  bases.push(mods[i]);
-                  //console.log(bases);
-                  //console.log(mods);
+                bases.push(mods[i]);
+                //console.log(bases);
+                //console.log(mods);
               }
+            }
           }
-          /*if (this.baseDamage[i] === undefined) {
-            console.log("We need to add this base damage type to the baseDamage property.");
-            return this.baseDamage.push(this.damageModifiers[i]);
-          }*/
-        }
-      }  
-  }
-  
+        };
+     
+    set newAtkSpd(x) {
+      this.atkSpd = x;
+    }
+
+    get calcAtkSpd() {
+      return this.mergeAtkSpdMods;
+    }
+       
+    mergeAtkSpdMods() {
+      // Attempt to calculate new atkSpd: working
+      let total = this.atkSpdMods.reduce(
+        (previousValue, currentValue) => previousValue + currentValue, 0);
+      
+      return this.atkSpd += total;
+    }
+
+    get calcCdr() {
+      return this.mergeCdrMods;
+    }
+
+    mergeCdrMods() {
+      // Attempt to calculate new cooldown: not working
+      let total = this.cdrMods.reduce(
+        (previousValue, currentValue) => previousValue + currentValue, 0);
+      
+      return this.cdr += total;
+    }
+}
 const hammerThrow = new Skills(
   ['Physical','Throwing Attack','Strength','Dexterity'],
   [['Physical', 18]],
-  [['Cold', 3],['Physical', 2],['Lightning', 1],['Physical', 5]], 
-  0, 
-  1,
+  [['Cold', 3],['Fire', 20],['Lightning', 10],['Physical', 10]], 
   0,
+  [], 
+  1,
+  [-.2,.2,.4,-.3,.3],
+  0,
+  [-.1,-.5,-.1],
   .05,
-  2);
+  [],
+  2,
+  []);
 
 const smite = new Skills(
   ['Fire','Spell','Attunement'],
   [['Fire', 30]],
   [],
   3,
+  [],
   1,
+  [],
   0,
+  [],
   .05,
-  2);
+  [],
+  2,
+  []);
 
-hammerThrow.calculateBaseDamage;
 
-console.log(hammerThrow.damageModifiers);
-console.log(hammerThrow.baseDamage);
+console.log(hammerThrow.cdr);
+console.log(hammerThrow.cdrMods);
+hammerThrow.calcCdr();
+console.log(hammerThrow.cdr);
+console.log(hammerThrow.cdrMods);
